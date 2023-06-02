@@ -2,7 +2,8 @@ import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import { connect } from "./config/connect_db";
-import userRouter from "./router/user";
+import studentRouter from "./router/student";
+import teacherRouter from "./router/teacher";
 
 const app = express();
 
@@ -19,8 +20,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //config user router
-app.use("/", userRouter);
+app.use("/student", studentRouter);
+app.use("/teacher", teacherRouter);
 
-app.listen(3001, () => {
-  console.log("server is running http://localhost:3001/");
+app.listen(3000, () => {
+  console.log("server is running http://localhost:3000/");
 });
